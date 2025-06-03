@@ -1,5 +1,6 @@
-# Replace base image with your prefered-base image
-FROM jupyter:base
+# Replace base image with your prefereed-base image
+
+FROM jupyterhub/base
 
 ENV LD_LIBRARY_PATH=/usr/lib:$LD_LIBRARY_PATH 
 ENV DISPLAY=:0
@@ -14,13 +15,12 @@ RUN apt-get update;\
       apt-get install -y python3.8;\
       apt-get install -y make gcc build-essential libgtk-3-dev wget git;\
       apt-get install -y python3-pip openjdk-11-jdk-headless libnotify-dev libsdl2-dev libwebkit2gtk-4.0-dev libiconv-hook-dev;\
-      apt-get install -y pkg-config python3-dev libnotify4 libmysqlclient-dev build-essential;\
+      apt-get install -y pkg-config libnotify4 libmysqlclient-dev;\
       apt-get install -y default-jre xz-utils curl;\
       apt-get install default-jdk python3-dev g++ libffi-dev freeglut3-dev xvfb;\
       apt-get install -y ssh xauth xorg
 
 RUN apt-get install -y python3-virtualenv;\
-      apt-get install -y python3.8-venv;\
       apt-get install -y python3-setuptools;\
       export PATH=$PATH:/home/ubuntu/.local/bin;\
       apt-get install -y python3.8-distutils;\
@@ -67,9 +67,9 @@ WORKDIR /opt
 RUN git clone https://github.com/CellProfiler/CellProfiler-plugins.git
 WORKDIR /opt/CellProfiler-plugins
 RUN /bin/bash -c "source activate cellprofiler && \
-              pip install -e .[cellpose] && \
-              pip install -e .[imagejscript] && \
-               pip install -e .[omnipose]"
+                pip install -e .[cellpose] && \
+                pip install -e .[imagejscript] && \
+                pip install -e .[omnipose]"
 
 
 # Download CellPose models and install cellprofiler kernel
@@ -123,7 +123,7 @@ ENV PATH="/opt/ilastik-1.4.0.post1-Linux:$PATH"
 
 # set config parameters for cellprofiler and QuPath
 COPY ./config/script.groovy /opt  
-COPY   ./config/CellProfilerLocal.cfg /tmp/
+COPY ./config/CellProfilerLocal.cfg /tmp/
 
 # copy and install jupyter-proxies
 RUN mkdir -p /opt/proxies 
