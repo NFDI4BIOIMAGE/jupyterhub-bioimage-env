@@ -18,8 +18,3 @@ def setup_qupath():
         }
     }
 
-
-
-# qupath="/opt/QuPath-v0.5.1-Linux/QuPath/bin/QuPath.sh"
-        # $qupath script /opt/ --save
-        #$qupath script /opt/script.groovy --save

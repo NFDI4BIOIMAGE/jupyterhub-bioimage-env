@@ -12,6 +12,5 @@ def setup_cellprofiler():
             'title' : 'Cellprofiler',
             'category': 'X11 Applications',
             'icon_path' : os.path.join(os.path.dirname(os.path.abspath(__file__)), 'icons', 'cellprofiler.svg')
-           # 'icon_path': '/opt/jupyter_cellprofiler_proxy/jupyter_cellprofiler_proxy/icons/test-icon.svg'
         }
     }
