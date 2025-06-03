@@ -14,7 +14,7 @@ A **JupyterHub-based Docker image** with a pre-configured **Python environment**
 
 This repository outlines the Docker image configuration and Jupyter proxy integration used to support image analysis tools.
 
-Currently, the image is based on the **University of Münster JupyterHub image**. However, we are planning to build a separate, standalone image to ensure accessibility and compatibility with various JupyterHub instances.
+Currently, the image is based on the **University of Münster JupyterHub**. However, we are planning to build a separate, standalone image to ensure accessibility and compatibility with various JupyterHub instances.
 
 To build the image yourself, you can start with either:
 
@@ -30,7 +30,25 @@ Make sure to install the necessary components, including:
 This setup enables support for **GUI-based applications** within the Jupyter notebook interface.
 
 ---
+## 🚀 Usage
 
+### Build the Docker Image
+
+```bash
+docker build -t bioimage-jupyter .
+```
+### Run the Docker Image
+```bash
+docker run --name bioimage --rm --net=host -w "/usr/local/src" -e HOME="/tmp" -p 8888:8888 bioimage-jupyter:latest
+```
+Then open your browser and go to:
+```bash
+http://localhost:8888
+```
+
+The Jupyter Notebook interface will open. From there, you can access terminal, notebooks, and any installed GUI-based image analysis tools
+
+---
 ## 🧰 Installed Bioimage Tools and Plugins
 
 | No. | Tool         | Version     | Plugins                                                                 |
@@ -51,11 +69,7 @@ This setup enables support for **GUI-based applications** within the Jupyter not
 
 ---
 
-## 📄 License
 
-This project is released under the MIT License. See the [LICENSE](./LICENSE) file for details.
-
----
 
 
 
